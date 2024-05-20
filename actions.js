@@ -5,6 +5,7 @@ const increment = () => ({ type: 'INCREMENT' });
 const decrement = () => ({ type: 'DECREMENT' });
 const reset = () => ({ type: 'RESET' });
 
+// create a reducer function
 const tallyReducer = (state = initialState, action) => {
     switch (action.type) {
       case 'INCREMENT':
