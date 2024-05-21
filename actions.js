@@ -9,7 +9,8 @@ const reset = () => ({ type: 'RESET' });
 export { initialState, increment, decrement, reset };
 
 // create a reducer function
-const tallyReducer = (state = initialState, action) => {
+export const tallyReducer = (state = initialState, action) => {
+  console.log('Current state:', state);
     switch (action.type) {
       case 'INCREMENT':
         return { count: state.count + 1 };
