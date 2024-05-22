@@ -1,5 +1,5 @@
-import store from './store';
-import { increment, decrement, reset } from './actions';
+import { store } from './store.js';
+import { increment, decrement, reset } from './actions.js';
 
 // SCENARIO 1: Initial State Verification
 console.log('Initial state:', store.getState()); // Initial state: { count: 0 }

@@ -10,7 +10,7 @@ export { initialState, increment, decrement, reset };
 
 // create a reducer function
 export const tallyReducer = (state = initialState, action) => {
-  console.log('Current state:', state);
+//  console.log('Current state:', state);
     switch (action.type) {
       case 'INCREMENT':
         return { count: state.count + 1 };
