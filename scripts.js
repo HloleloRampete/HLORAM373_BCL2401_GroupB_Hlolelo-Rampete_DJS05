@@ -5,7 +5,7 @@
  * @property {number} count - The initial count value.
  */
 const initialState = {
-    count: 0
+  count: 0,
 };
 
 // Action types
@@ -13,31 +13,31 @@ const initialState = {
  * The action type for incrementing the count.
  * @type {string}
  */
-const INCREMENT = 'INCREMENT';
+const INCREMENT = "INCREMENT";
 
 /**
  * The action type for decrementing the count.
  * @type {string}
  */
-const DECREMENT = 'DECREMENT';
+const DECREMENT = "DECREMENT";
 
 /**
  * The action type for resetting the count.
  * @type {string}
  */
-const RESET = 'RESET';
+const RESET = "RESET";
 
 /**
  * The action type for adding a value to the count.
  * @type {string}
  */
-const ADD = 'ADD';
+const ADD = "ADD";
 
 /**
  * The action type for subtracting a value from the count.
  * @type {string}
  */
-const SUBTRACT = 'SUBTRACT';
+const SUBTRACT = "SUBTRACT";
 
 // Action creators
 /**
@@ -80,20 +80,20 @@ const subtract = (value) => ({ type: SUBTRACT, payload: value });
  * @returns {Object} The new state.
  */
 const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case INCREMENT:
-            return {...state, count: state.count + 1 };
-        case DECREMENT:
-            return {...state, count: state.count - 1 };
-        case RESET:
-            return {...state, count: 0 };
-        case ADD:
-            return {...state, count: state.count + action.payload };
-        case SUBTRACT:
-            return {...state, count: state.count - action.payload };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case INCREMENT:
+      return { ...state, count: state.count + 1 };
+    case DECREMENT:
+      return { ...state, count: state.count - 1 };
+    case RESET:
+      return { ...state, count: 0 };
+    case ADD:
+      return { ...state, count: state.count + action.payload };
+    case SUBTRACT:
+      return { ...state, count: state.count - action.payload };
+    default:
+      return state;
+  }
 };
 
 // Create store
@@ -103,41 +103,41 @@ const reducer = (state = initialState, action) => {
  * @returns {Object} The store object.
  */
 const createStore = (reducer) => {
-    let state;
-    const listeners = [];
+  let state;
+  const listeners = [];
 
-    /**
-     * Returns the current state.
-     * @returns {Object} The current state.
-     */
-    const getState = () => state;
+  /**
+   * Returns the current state.
+   * @returns {Object} The current state.
+   */
+  const getState = () => state;
 
-    /**
-     * Dispatches an action to the store.
-     * @param {Object} action - The action object.
-     */
-    const dispatch = (action) => {
-        state = reducer(state, action);
-        listeners.forEach(listener => listener());
+  /**
+   * Dispatches an action to the store.
+   * @param {Object} action - The action object.
+   */
+  const dispatch = (action) => {
+    state = reducer(state, action);
+    listeners.forEach((listener) => listener());
+  };
+
+  /**
+   * Subscribes a listener function to the store.
+   * @param {Function} listener - The listener function.
+   * @returns {Function} A function to unsubscribe the listener.
+   */
+  const subscribe = (listener) => {
+    listeners.push(listener);
+    return () => {
+      const index = listeners.indexOf(listener);
+      listeners.splice(index, 1);
     };
+  };
 
-    /**
-     * Subscribes a listener function to the store.
-     * @param {Function} listener - The listener function.
-     * @returns {Function} A function to unsubscribe the listener.
-     */
-    const subscribe = (listener) => {
-        listeners.push(listener);
-        return () => {
-            const index = listeners.indexOf(listener);
-            listeners.splice(index, 1);
-        };
-    };
+  // Initialize the state
+  dispatch({ type: "@@INIT" });
 
-    // Initialize the state
-    dispatch({ type: '@@INIT' });
-
-    return { getState, dispatch, subscribe };
+  return { getState, dispatch, subscribe };
 };
 
 // Initialize store
@@ -153,14 +153,14 @@ const store = createStore(reducer);
  * @param {Function} listener - The listener function.
  */
 store.subscribe(() => {
-    console.log('State:', store.getState());
+  console.log("State:", store.getState());
 });
 
 // Log the initial state
 /**
  * Logs the initial state to the console.
  */
-console.log('Initial State:', store.getState());
+console.log("Initial State:", store.getState());
 
 // Dispatch ADD actions to set state to count: 2
 /**
@@ -178,5 +178,5 @@ store.dispatch(subtract(1)); // State: { count: 1 }
 // Dispatch RESET action
 /**
  * Dispatches a RESET action to the store.
- */ 
+ */
 store.dispatch(reset()); // State: { count: 0 }
