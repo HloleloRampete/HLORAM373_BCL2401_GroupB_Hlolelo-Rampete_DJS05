@@ -1,46 +1,41 @@
-# HLORAM373_BCL2401_GroupB_Hlolelo-Rampete_DJS05
-BUILDING A REDUX-INSPIRED STORE FOR A TALLY APP
+# DJS05 README Reflection: Functional Programming and Redux-inspired Store
+
+## Project Overview
+
+In this project, I implemented a Redux-inspired store to manage and log the state of a counting Tally App. The app allows users to increment, decrement, reset, add, and subtract from a counter, and the state is updated and logged to the console accordingly.
+
+## Lessons Learnt in Functional Programming
+
+Through this project, I gained a deeper understanding of functional programming concepts, such as:
+
+1. **Immutability**: I learned to treat state as immutable data structures, which ensures predictability and prevents unintended side effects.
+2. **Pure Functions**: I understood the importance of writing pure functions, which have no side effects and always return the same output given the same inputs.
+3. **Higher-Order Functions**: I used higher-order functions, such as reduce and map, to simplify code and make it more composable.
+
+## How the Code Works
+The code is structured into several modules:
+
+**actions.js**: Defines action creators for incrementing, decrementing, resetting, adding, and subtracting from the counter.
+**reducer.js**: Implements the reducer function, which updates the state based on the actions dispatched.
+**store.js**: Creates the Redux-inspired store, which manages the state and provides methods for dispatching actions and subscribing to state changes.
+**index.js**: Initializes the store, subscribes to state changes, and logs the state to the console.
+The code uses a functional programming approach, with a focus on immutability and pure functions. The reducer function is a pure function that takes the current state and an action as inputs and returns a new state. The store uses the reducer function to update the state and notify subscribers of state changes.
+
+## Why This is the Best Way to Structure Code
+
+This project demonstrates the benefits of structuring code using functional programming principles and a Redux-inspired store:
+
+1. **Predictability**: The code is predictable and easy to reason about, thanks to immutability and pure functions.
+2. **Modularity**: The code is modular and composable, making it easy to add new features or modify existing ones.
+3. **Scalability**: The code is scalable and can handle complex state management tasks with ease.
+
+## Redux-inspired Store
+
+The Redux-inspired store is a key component of this project. It provides a centralized way to manage and log the state of the Tally App. The store:
+
+1. **Manages State**: The store manages the state of the app, ensuring that it is updated correctly and predictably.
+2. **Logs State**: The store logs the state to the console, providing a clear and concise way to track state changes.
 
 
-In this challenge, you will venture into the realm of state management by constructing a Redux-inspired store to manage the state of a simple Tally App. Your primary goal is to manage the app's state changes efficiently, focusing on core functionalities like incrementing, decrementing, and resetting a counter. Instead of rendering changes on the UI, you'll subscribe to state updates and log them to the console, highlighting the power of state management in applications.
-
-## Objective
-Create a minimalistic, Redux-inspired store to manage and log the state of a counting Tally App. Your implementation will not involve UI rendering; instead, it will use console logs to demonstrate state management effectively.
-
-Observer Pattern resource from Refactoring Guru: https://refactoring.guru/design-patterns/observer
-
-User Stories (Gherkin Syntax)
- 
-
-Your challenge will encompass the following scenarios, tested through your store's implementation:
-
-SCENARIO 1: Initial State Verification
- 
-
-GIVEN no interactions have been performed yet
-WHEN the “getState” method is run
-AND the result is logged to the console
-AND the browser console is open
-THEN the state should show a count of 0
-SCENARIO 2: Incrementing the Counter
- 
-
-GIVEN no interactions have been performed yet
-WHEN an “ADD” action is dispatched
-AND another “ADD” action is dispatched
-AND the browser console is open
-THEN the state should show a count of 2
-SCENARIO 3: Decrementing the Counter
- 
-
-GIVEN the current count in the state is 2
-WHEN a “SUBTRACT” action is dispatched
-AND the browser console is open
-THEN the state should display a count of 1
-SCENARIO 4: Resetting the Counter
- 
-
-GIVEN the current count in the state is 1
-WHEN a “RESET” action is dispatched
-AND the browser console is open
-THEN the state should display a count of 0
+Provides a Single Source of Truth: The store provides a single source of truth for the app's state, making it easy to debug and reason about the code.
+Overall, this project demonstrates the power of functional programming and Redux-inspired stores in building robust, scalable, and maintainable software applications.
